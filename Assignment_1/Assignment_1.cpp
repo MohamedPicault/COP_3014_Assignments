@@ -1,5 +1,5 @@
 /*
-Lofton Bullard	        Total Points:  10
+Mohamed R. Picault	        Total Points:  10
 Due Date:  01/27/2020
 Course:  C0P3014
 Assignment:  Assignment 1
