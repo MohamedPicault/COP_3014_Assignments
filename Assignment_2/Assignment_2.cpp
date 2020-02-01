@@ -29,7 +29,7 @@ using namespace std;
 **********************************************************/
 class order_record
 {
-public:
+public:// making the attributes of the class order_record accessible when called
 	string cell_number;
 	string item_number;
 	double quantity;
@@ -64,9 +64,14 @@ void process(order_record &);
 
 //*************************************************************************************
 
-void input(ifstream & in, order_record & p_record) // example using the call by reference mechanism in C++ -- call record is passed by reference --note & operator
+void input(ifstream & infile, order_record & customer_record) // example using the call by reference mechanism in C++ -- call record is passed by reference --note & operator
 {
-	in >> p_record.cell_number;
+	infile >> customer_record.cell_number;
+	infile >> customer_record.item_number;
+	infile >> customer_record.quantity;
+	infile >> customer_record.price;
+	infile >> customer_record.processing_plant;
+
 	//add more code to read the rest of the fields (item_number, quantity, price and processing_plant) into the 
 	//order record, p_record.
 }
@@ -78,7 +83,7 @@ void input(ifstream & in, order_record & p_record) // example using the call by 
 //Description:  Describe what the function does (purpose).
 //*************************************************************************************
 
-void output(const order_record & p_record)
+void output(const order_record & customer_record)
 {
 	//Use thee following statement to help you format you our output. These statements are called the magic formula.
 	cout.setf(ios::showpoint);
@@ -87,7 +92,11 @@ void output(const order_record & p_record)
 	/********************************************/
 
 
-	//cout << p_record.cell_number << "\t";
+	cout << customer_record.cell_number << "\t";
+	cout << customer_record.item_number << "\t";
+	cout << customer_record.quantity << "\t";
+	cout << customer_record.price << "\t";
+	cout << customer_record.processing_plant << "\t";
 	//add more code to print all the fields in the order record
 	
 
@@ -101,11 +110,18 @@ void output(const order_record & p_record)
 //*************************************************************************************
 
 //Note: there is one 1 input/output parameter
-void process(order_record & p_record)
+void process(order_record & customer_record)
 {
+	double procesPLant = customer_record.processing_plant ;
+	if (0 <= customer_record.processing_plant)
+	{
+		if (customer_record.processing_plant)
+		{
 
+		}
+	}
 	//put your code here to process/calculate the tax_rate, order_tax, net_cost, and total_cost
-	//the p_record
+	
 
 }
 
@@ -115,24 +131,26 @@ int main()
 
 	order_record customer_record;
 
-	ifstream in;    //declaring an input file stream
-	in.open("purchase_data.txt");
-
-	if (in.fail())
+	ifstream infile;    //declaring an input file stream
+	infile.open("Purchase_data_Assignment2.txt");
+	
+	if (infile.fail())
 	{
-		cout << "Input file did not open correctly" << endl;
+		cerr << "Input file did not open correctly" << endl;
+		exit(1);
+
 	}
 	else
 	{
-		while (!in.eof())
+		while (!infile.eof())
 		{
-			input(in, customer_record);
+			input(infile, customer_record);
 			//process(customer_record);
 			//output(customer_record);
 		}
 	}
 
-	in.close();
+	infile.close();
 
 	return 0;
 }
