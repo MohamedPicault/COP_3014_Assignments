@@ -4,7 +4,7 @@
 
 
 //EXAMPLE OF PROGRAM HEADER
-/************************************************************************************************************************
+/**
 
 Name: Mohamed R. Picault                                 Z#:23204935
 Course: Foundations of Computer Science (COP3014)
@@ -15,18 +15,15 @@ Assignment #: amazon_orders.cpp
 
 Description:
 this program is created to gather data from current record (order record) and process theose records and formate them in the desired formate
-*************************************************************************************************************************/
+*/
 
-//Include the following
 
 #include <iostream>
 #include <string>
-#include <fstream>  //you must include this library if you wish to do file i/o
+#include <fstream>  //library to use file i/o
 using namespace std;
 
-/*********************************************************
-//Following is the declaration of a order record
-**********************************************************/
+
 class order_record
 {
 public:// making the attributes of the class order_record accessible when called
@@ -48,21 +45,7 @@ void input(ifstream &, order_record &);
 void output(const order_record &);
 void process(order_record &);
 
-//Function Implementations will go here
 
-///*************************************************************************************
-//Name:  input
-//Precondition: State what is true before the function is called.
-// Example: the varialbes (formal parameters) have not been initialized
-//Postcondition: State what is true after the function has executed.
-// Example: the varaibles (formal parameters) have been initialized
-//Description:  
-// Example:Get input (values of cell_number, item_number, quantity, price, processing_plant ) 
-//from data file order record (p_record).
-
-//PURPOSE: SHOW ME THAT YOU KNOW HOW TO READ INPUT AND USE INPUT (CALL BY VALUE) & OUTPUT (CALL BY VALUE) PARAMETERS
-
-//*************************************************************************************
 
 void input(ifstream & infile, order_record & customer_record) // example using the call by reference mechanism in C++ -- call record is passed by reference --note & operator
 {// function is getting the data through file input and store those values into the class variables through the use of the object customer_record
@@ -71,10 +54,6 @@ void input(ifstream & infile, order_record & customer_record) // example using t
 	infile >> customer_record.quantity;
 	infile >> customer_record.price;
 	infile >> customer_record.processing_plant;
-
-	//add more code to read the rest of the fields (item_number, quantity, price and processing_plant) into the
-	// customer_record
-	
 }
 
 
@@ -84,9 +63,9 @@ void output(const order_record & customer_record)
 	//Use thee following statement to help you format you our output. These statements are called the magic formula.
 
 	/********************************************/
-	cout.setf(ios::showpoint);
-	cout.setf(ios::fixed);
+	cout << fixed;
 	cout.precision(2);
+	
 	// print the value of the object properties input from the input file
 	cout << customer_record.cell_number << "\t";
 	cout << customer_record.item_number << "\t";
@@ -96,20 +75,12 @@ void output(const order_record & customer_record)
 	cout << customer_record.tax_rate << "\t";
 	cout << customer_record.order_tax << "\t";
 	cout << customer_record.net_cost << "\t";
-	cout << customer_record.total_cost << "\t\n";
-	//add more code to print all the fields in the order record
-	
+	cout << customer_record.total_cost << "\n";
 
 }
 
-///*************************************************************************************
-//Name:  process
-//Precondition: The state what is true before the function is called.
-//Postcondition: State what is true after the function has executed.
-//Description:  Describe what the function does (purpose).
-//*************************************************************************************
 
-//Note: there is one 1 input/output parameter
+
 void process(order_record& customer_record)
 {
 	//Here I created local variables to the function process,
