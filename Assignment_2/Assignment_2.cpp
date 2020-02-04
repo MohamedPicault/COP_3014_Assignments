@@ -1,9 +1,3 @@
-
-
-//THIS IS ONLY AN EXAMPLE TO HELP YOU GET STARTED WITH THIS ASSIGNMENT
-
-
-//EXAMPLE OF PROGRAM HEADER
 /**
 
 Name: Mohamed R. Picault                                 Z#:23204935
@@ -47,8 +41,8 @@ void process(order_record &);
 
 
 
-void input(ifstream & infile, order_record & customer_record) // example using the call by reference mechanism in C++ -- call record is passed by reference --note & operator
-{// function is getting the data through file input and store those values into the class variables through the use of the object customer_record
+void input(ifstream & infile, order_record & customer_record) 
+{// reading the .txt files and inputting the information into the class order_record
 	infile >> customer_record.cell_number;
 	infile >> customer_record.item_number;
 	infile >> customer_record.quantity;
@@ -60,9 +54,7 @@ void input(ifstream & infile, order_record & customer_record) // example using t
 
 void output(const order_record & customer_record)
 {
-	//Use thee following statement to help you format you our output. These statements are called the magic formula.
 
-	/********************************************/
 	cout << fixed;
 	cout.precision(2);
 	
@@ -74,7 +66,7 @@ void output(const order_record & customer_record)
 	cout << customer_record.processing_plant << "\t";
 	cout << customer_record.tax_rate << "\t";
 	cout << customer_record.order_tax << "\t";
-	cout << customer_record.net_cost << "\t";
+	cout << customer_record.net_cost << "\t\t";
 	cout << customer_record.total_cost << "\n";
 
 }
@@ -119,7 +111,7 @@ void process(order_record& customer_record)
 	}
 
 	customer_record.tax_rate = taxRate;
-	orderTax = quantity * price * (taxRate / 100);
+	orderTax = quantity * price * (taxRate / 100.0);
 	customer_record.order_tax = orderTax;
 	netCost = quantity * price;
 	customer_record.net_cost = netCost;
@@ -130,7 +122,7 @@ void process(order_record& customer_record)
 
 }
 
-//Here is your driver to test the program
+
 int main()
 {
 
