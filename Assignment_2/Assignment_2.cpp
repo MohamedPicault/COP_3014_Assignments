@@ -14,6 +14,7 @@ this program is created to gather data from current record (order record) and pr
 
 #include <iostream>
 #include <string>
+#include <iomanip>
 #include <fstream>  //library to use file i/o
 using namespace std;
 
@@ -66,8 +67,8 @@ void output(const order_record & customer_record)
 	cout << customer_record.processing_plant << "\t";
 	cout << customer_record.tax_rate << "\t";
 	cout << customer_record.order_tax << "\t";
-	cout << customer_record.net_cost << "\t\t";
-	cout << customer_record.total_cost << "\n";
+	cout << setw(5) << left <<customer_record.net_cost << "\t";
+	cout << setw(5) << left << customer_record.total_cost << "\n";
 
 }
 

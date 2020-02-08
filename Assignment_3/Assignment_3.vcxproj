@@ -138,7 +138,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="purchase_dataAssignment4.txt" />
+    <Text Include="purchase_data.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Assignment_3.cpp" />

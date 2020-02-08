@@ -6,13 +6,15 @@ Course: Foundations of Computer Science (COP3014)
 Professor: Dr. Lofton Bullard
 Due Date:Feb 10, 2020                Due Time:11:59 PM
 Total Points: 20
-Assignment #: amazon_purchase_recs.cpp
+Assignment #: Assignment_3.cpp
 
 Description:
 
+The program's purpose to to take in the values/data stored in a .txt files and transfer them within variables thought the use of the input 
+function from the file i/o library, where they will later be used for calculation and displaying.
 *************************************************************************************************************************/
 
-//Include the following
+
 
 #include <iostream>
 #include <string>
@@ -24,23 +26,14 @@ using namespace std;
 
 void input(ifstream &, string &, string &, double &, double &, int &);
 void output(string, string, double, double, int, double, double, double, double);
-void process(double, double, int, double &, double &, double &, double);
+void process(double, double, int, double &, double &, double &, double &);
 
-//Function Implementations will go here
 
-///*************************************************************************************
+
 //Name:  input
-//Precondition: State what is true before the function is called.
-// Example: the varialbes (formal parameters) have not been initialized
-//Postcondition: State what is true after the function has executed.
-// Example: the varaibles (formal parameters) have been initialized
-//Description:  
-// Example:Get input (values of cell_number, item_number, quantity, price, processing_plant ) 
-//from data file.
-
-//PURPOSE: SHOW ME THAT YOU KNOW HOW TO READ INPUT AND USE INPUT (CALL BY VALUE) & OUTPUT (CALL BY VALUE) PARAMETERS
-
-//*************************************************************************************
+//Precondition:the parameters arent yet to be initialized
+//Postcondition:the parameters of the varaible are initialized
+//Description: This function takes in the stored information on the. txt file and transfers it to local variables within thr main function.
 
 void input(ifstream & in, string & cell_number, string & item_number, double & quantity, double & price, int & processing_plant) // example using the call by reference mechanism in C++ -- call record is passed by reference --note & operator
 {
@@ -56,50 +49,55 @@ void input(ifstream & in, string & cell_number, string & item_number, double & q
 
 ///*************************************************************************************
 //Name:  output
-//Precondition: State what is true before the function is called.
-//Postcondition: State what is true after the function has executed.
-//Description:  Describe what the function does (purpose).
-//*************************************************************************************
-
-
+//Description: This function use the decimal manipulation function to formate
+//the number with the desired decimal palce.
 void output(string cell_number, string item_number, double quantity, double price, int processing_plant, double tax_rate, double order_tax, double net_cost, double total_cost)
 {
 
-	//Use thee following statement to help you format you our output. These statements are called the magic formula.
 	cout.setf(ios::showpoint);
 	cout.precision(2);
 	cout.setf(ios::fixed);
-	/********************************************/
-	cout << cell_number;
-	cout << item_number;
-	cout << quantity;
-	cout << price;
-	cout << processing_plant;
-	cout << tax_rate;
-	cout << order_tax;
-	cout << net_cost;
-	cout << total_cost;
-
-
-	//cout << cell_number << "\t";
-	//add more code to print all the variables
-
+	
+	cout << cell_number << "\t";
+	cout << item_number << "\t";
+	cout << quantity << "\t";
+	cout << price << "\t";
+	cout << processing_plant << "\t";
+	cout << tax_rate << "\t";
+	cout << order_tax << "\t";
+	cout << net_cost << "\t";
+	cout << total_cost << "\t\n";
 
 }
 
-///*************************************************************************************
-//Name:  process
-//Precondition: The state what is true before the function is called.
-//Postcondition: State what is true after the function has executed.
-//Description:  Describe what the function does (purpose).
-//*************************************************************************************
 
-
-//Note: there is one 1 input/output parameter
-void process(double quantity, double price, int processing_plant, double & tax_rate, double & order_tax, double & net_cost, double & total_cost)
+void process(double quantity, double price, int processing_plant, double& tax_rate, double& order_tax, double& net_cost, double& total_cost)
 {
-		
-	//put your code here to process/calculate the tax_rate, order_tax, net_cost, and total_cost
+	
+	
+	if ( 0 <= processing_plant && processing_plant <= 50)
+	{
+		tax_rate = 6.0;
+	}
+	else if (51 <= processing_plant && processing_plant <= 110 )
+	{
+		tax_rate = 7.0;
+	}
+	else if (111 <= processing_plant && processing_plant <= 200)
+	{
+		tax_rate = 8.0;
+	}
+	else if (201 <= processing_plant && processing_plant <= 500 )
+	{
+		tax_rate = 9.0;
+	}
+	else if (processing_plant > 500)
+	{
+		tax_rate = 11.0;
+	}
+	order_tax = quantity * price * (tax_rate / 100.0);
+	net_cost = quantity * price;
+	total_cost = net_cost + order_tax;
 
 }
 
@@ -129,8 +127,8 @@ int main()
 		{
 
 			input(in, cell_number, item_number, quantity, price, processing_plant);
-			//process(add actual arguments...);
-			//output(add actual arguments);
+			process(quantity, price, processing_plant, tax_rate, order_tax, net_cost, total_cost);
+			output(cell_number, item_number, quantity, price, processing_plant, tax_rate, order_tax, net_cost, total_cost);
 		}
 	}
 
