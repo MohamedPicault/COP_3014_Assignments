@@ -9,7 +9,10 @@ Total Points: 20
 Assignment #: amazon_orders.cpp
 
 Description:
-this program is created to gather data from current record (order record) and process theose records and formate them in the desired formate
+this program is created to gather data from current record (order record),
+process theose records and formate them in the desired formate,
+and stores the order record results in the output file (Customer_invoice.txt)
+
 */
 
 
