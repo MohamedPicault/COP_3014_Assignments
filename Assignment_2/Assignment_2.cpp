@@ -1,4 +1,4 @@
-/**
+ /**
 
 Name: Mohamed R. Picault                                 Z#:23204935
 Course: Foundations of Computer Science (COP3014)
@@ -74,7 +74,7 @@ void output(const order_record & customer_record)
 
 
 
-void process(order_record& customer_record)
+void process(order_record & customer_record)
 {
 	//Here I created local variables to the function process,
 	//to that the calculation is easy to read.

@@ -18,7 +18,7 @@ function from the file i/o library, where they will later be used for calculatio
 
 #include <iostream>
 #include <string>
-#include <fstream>  //you must include this library if you wish to do file i/o
+#include <fstream>  //include the library for file i/o
 using namespace std;
 
 
@@ -35,7 +35,7 @@ void process(double, double, int, double &, double &, double &, double &);
 //Postcondition:the parameters of the varaible are initialized
 //Description: This function takes in the stored information on the. txt file and transfers it to local variables within thr main function.
 
-void input(ifstream & in, string & cell_number, string & item_number, double & quantity, double & price, int & processing_plant) // example using the call by reference mechanism in C++ -- call record is passed by reference --note & operator
+void input(ifstream & in, string & cell_number, string & item_number, double & quantity, double & price, int & processing_plant) // call by reference mechanism in C++ -- call record is passed by reference --note & operator
 {
 	in >> cell_number;
 	in >> item_number; 
@@ -43,11 +43,9 @@ void input(ifstream & in, string & cell_number, string & item_number, double & q
 	in >> price;
 	in >> processing_plant;
 
-
-	//add more code to read the rest of the variables (item_number, quantity, price and processing_plant)
 }
 
-///*************************************************************************************
+
 //Name:  output
 //Description: This function use the decimal manipulation function to formate
 //the number with the desired decimal palce.
